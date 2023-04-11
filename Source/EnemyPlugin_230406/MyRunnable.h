@@ -20,7 +20,6 @@ public:
 	FSocket* Socket;
 
 protected:
-	void RecvMessage();
 
 private:
 	FRunnableThread* Thread;

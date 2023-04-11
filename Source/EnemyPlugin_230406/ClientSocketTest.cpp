@@ -5,7 +5,7 @@
 #include "Sockets.h"
 #include "SocketSubSystem.h"
 #include "Interfaces/IPv4/IPv4Address.h"
-//#include "MyRunnable.h"
+#include "MyRunnable.h"
 
 // Sets default values
 AClientSocketTest::AClientSocketTest()
@@ -22,8 +22,7 @@ void AClientSocketTest::BeginPlay()
 
 	ConnectSocket();
 
-	//FMyRunnable* MyRunnable = new FMyRunnable();
-
+	FMyRunnable* MyRunnable = new FMyRunnable();
 }
 
 // Called every frame
@@ -52,6 +51,7 @@ void AClientSocketTest::ConnectSocket()
 	if (bConnected)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Connected!")));
+		
 	}
 	else
 	{
@@ -78,14 +78,14 @@ void AClientSocketTest::SendMessage(FString Message)
 
 }
 
-void AClientSocketTest::RecvMessage()
-{
-	uint8 Buffer[1024];
-	int32 BytesRead = 0;
-	if (Socket->Recv(Buffer, sizeof(Buffer), BytesRead))
-	{
-		FString RecvData = FString((char*)Buffer, BytesRead);
-		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Black, FString::Printf(TEXT("%s"), *RecvData));
-	}
-}
+//void AClientSocketTest::RecvMessage()
+//{
+//	uint8 Buffer[1024];
+//	int32 BytesRead = 0;
+//	if (Socket->Recv(Buffer, sizeof(Buffer), BytesRead))
+//	{
+//		FString RecvData = FString((char*)Buffer, BytesRead);
+//		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Black, FString::Printf(TEXT("%s"), *RecvData));
+//	}
+//}
 

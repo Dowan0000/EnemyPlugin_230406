@@ -51,20 +51,20 @@ bool FMyRunnable::Init()
 
 uint32 FMyRunnable::Run()
 {
+	while (true)
+	{
+		uint8 Buffer[1024];
+		int32 BytesRead = 0;
+		if (Socket->Recv(Buffer, sizeof(Buffer), BytesRead))
+		{
+			FString RecvData = FString((char*)Buffer, BytesRead);
+			GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Black, FString::Printf(TEXT("%s"), *RecvData));
+		}
+	}
+	
 	return uint32();
 }
 
 void FMyRunnable::Exit()
 {
-}
-
-void FMyRunnable::RecvMessage()
-{
-	uint8 Buffer[1024];
-	int32 BytesRead = 0;
-	if (Socket->Recv(Buffer, sizeof(Buffer), BytesRead))
-	{
-		FString RecvData = FString((char*)Buffer, BytesRead);
-		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Black, FString::Printf(TEXT("%s"), *RecvData));
-	}
 }

@@ -29,7 +29,7 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void SendMessage(FString Message);
 
-	void RecvMessage();
+	//void RecvMessage();
 
 private:
 	FSocket* Socket;
