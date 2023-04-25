@@ -6,6 +6,18 @@
 #include "GameFramework/Actor.h"
 #include "MyActor.generated.h"
 
+USTRUCT(BlueprintType)
+struct FRandPoint
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FVector RandLoc;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bCanMove;
+
+};
+
 UCLASS()
 class ENEMYPLUGIN_230406_API AMyActor : public AActor
 {
@@ -22,5 +34,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	TArray<FRandPoint> FRandPointArr;
 
 };

@@ -19,6 +19,29 @@ void AMyActor::BeginPlay()
 	
 	FMyRunnable* MyRunnalbe = new FMyRunnable();
 
+
+	// .....
+
+	FRandPoint Item1;
+	Item1.RandLoc = FVector{ 1.f,1.f,1.f };
+	Item1.bCanMove = true;
+	
+	FRandPoint Item2;
+	Item1.RandLoc = FVector{ 2.f,2.f,2.f };
+	Item1.bCanMove = true;
+
+	FRandPoint Item3;
+	Item1.RandLoc = FVector{ 3.f,3.f,3.f };
+	Item1.bCanMove = false;
+
+	FRandPointArr.Add(Item1);
+	FRandPointArr.Add(Item2);
+	FRandPointArr.Add(Item3);
+
+	int32 Rand = FMath::RandRange(0, FRandPointArr.Num());
+	FRandPointArr[Rand].bCanMove = false;
+
+
 }
 
 // Called every frame
